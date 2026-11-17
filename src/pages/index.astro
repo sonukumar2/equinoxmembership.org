@@ -4,7 +4,7 @@ import Faq from '../components/Faq.astro';
 import { site, facts as f, money as m, year } from '../data/site';
 
 const title = `Equinox Membership Cost: Prices, Tiers & Fees (${site.updated})`;
-const description = `Equinox membership costs about ${m(f.singleLow)}–${m(f.singleHigh)}/month for one club, ${m(f.allAccessLow)}–${m(f.allAccessHigh)} for All Access and ${m(f.destinationLow)}+ for Destination, plus an initiation fee. Independent guide to prices, tiers and policies.`;
+const description = `Equinox membership costs about ${m(f.singleLow)}–${m(f.singleHigh)}/month for one club, ${m(f.allAccessLow)}–${m(f.allAccessHigh)} for All Access and ${m(f.destinationLow)}+ for Destination, plus an initiation fee. Guide to prices, tiers and policies.`;
 
 const toc = [
   ['what-you-get', 'What Equinox is and what you get'],
@@ -35,7 +35,7 @@ const org = { '@context': 'https://schema.org', '@type': 'WebSite', name: site.n
 <Base title={title} description={description}>
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">Independent guide · Reviewed {site.updated}</span>
+      <span class="eyebrow">Reviewed {site.updated}</span>
       <h1>Equinox Membership Cost and Pricing Guide</h1>
       <p class="lead">
         An Equinox membership costs roughly {m(f.singleLow)} to {m(f.singleHigh)} a month for one club, {m(f.allAccessLow)} to {m(f.allAccessHigh)} for All Access, and {m(f.destinationLow)} or more for Destination, usually on a {f.commitmentMonths}-month commitment with a one-time initiation fee. Equinox quotes prices club by club,
