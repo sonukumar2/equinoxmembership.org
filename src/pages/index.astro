@@ -1,0 +1,227 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import { site, facts as f, money as m, year } from '../data/site';
+
+const title = `Equinox Membership Cost: Prices, Tiers & Fees (${site.updated})`;
+const description = `Equinox membership costs about ${m(f.singleLow)}–${m(f.singleHigh)}/month for one club, ${m(f.allAccessLow)}–${m(f.allAccessHigh)} for All Access and ${m(f.destinationLow)}+ for Destination, plus an initiation fee. Independent guide to prices, tiers and policies.`;
+
+const toc = [
+  ['what-you-get', 'What Equinox is and what you get'],
+  ['membership-cost', 'Monthly cost and membership fees'],
+  ['tiers', 'Membership tiers compared'],
+  ['yearly-cost', 'Yearly membership cost'],
+  ['price-factors', 'Things that affect the price'],
+  ['rules', 'Contract, freeze, guest and cancellation rules'],
+  ['reading-quotes', 'How to read an Equinox price quote'],
+  ['save', 'How to save money'],
+  ['faq', 'Frequently asked questions'],
+  ['final', 'Final thoughts'],
+];
+
+const faqs = [
+  { q: 'How much does an Equinox membership cost per month?', a: `Equinox does not publish a national price. Reported dues run about ${m(f.singleLow)} to ${m(f.singleHigh)} a month for a single club, ${m(f.allAccessLow)} to ${m(f.allAccessHigh)} for All Access, and ${m(f.destinationLow)} to ${m(f.destinationHigh)} or more for Destination. New York and Los Angeles sit at the top of each range.` },
+  { q: 'Does Equinox charge an initiation fee?', a: `Yes. The membership agreement includes a one-time initiation fee due when you sign. Reported amounts run from ${m(f.initiationLow)} during promotions to about ${m(f.initiationHigh)}, and more at some flagship clubs. It is often waived or reduced during sales.` },
+  { q: 'Is there an Equinox annual fee?', a: 'Equinox membership agreements do not list a separate annual fee like budget gyms charge. Extras such as lockers, laundry, premium classes, personal training and spa treatments cost more.' },
+  { q: 'Is there a contract?', a: `The standard agreement has an initial ${f.commitmentMonths}-month commitment. After that, monthly memberships renew month to month. Some clubs offer month-to-month terms at a higher monthly rate.` },
+  { q: 'How do I cancel Equinox?', a: `Give ${f.cancelNoticeDays} days' written notice: in person at a club in your membership class, by mail to your home club or Equinox Concierge, by email to Cancellations@Equinox.com, or online if you joined online. You generally cannot cancel during the first ${f.commitmentMonths} months except for reasons listed in the agreement, such as moving more than 25 miles away or permanent disability.` },
+  { q: 'Can I freeze my Equinox membership?', a: `Yes. The agreement allows freezes of up to ${f.freezeMonths} months, or longer for medical reasons. Non-medical freezes carry an extra fee. Request one in club or by emailing Concierge@Equinox.com.` },
+  { q: 'Can I bring a guest to Equinox?', a: `New members receive ${f.guestPasses} guest passes, which replenish each year. You must accompany your guest, who must be at least ${f.guestMinAge}, show photo ID and sign a waiver. Guests aged 16 and 17 must come with a parent or guardian.` },
+  { q: 'Is the Equinox+ app included?', a: `Yes, club memberships include the Equinox+ app. On its own it costs ${m(f.appMonthly)} a month after a free trial.` },
+];
+
+const org = { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: site.url };
+---
+<Base title={title} description={description}>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Independent guide · Reviewed {site.updated}</span>
+      <h1>Equinox Membership Cost and Pricing Guide</h1>
+      <p class="lead">
+        An Equinox membership costs roughly {m(f.singleLow)} to {m(f.singleHigh)} a month for one club, {m(f.allAccessLow)} to {m(f.allAccessHigh)} for All Access, and {m(f.destinationLow)} or more for Destination, usually on a {f.commitmentMonths}-month commitment with a one-time initiation fee. Equinox quotes prices club by club,
+        so this guide shows the reported ranges, what each tier includes, and the rules worth knowing before you sign.
+      </p>
+      <p>
+        <a class="btn" href="#membership-cost">Check Equinox Membership Cost</a>
+        <a class="btn ghost" href="#tiers">Compare the tiers</a>
+      </p>
+      <div class="stats">
+        <div class="stat"><b>{m(f.singleLow)}+</b><span>Single club, per month</span></div>
+        <div class="stat"><b>{m(f.allAccessLow)}+</b><span>All Access, per month</span></div>
+        <div class="stat"><b>{m(f.destinationLow)}+</b><span>Destination, per month</span></div>
+        <div class="stat"><b>{f.clubs}</b><span>Clubs in the US, Canada and UK</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap layout single" style="grid-template-columns:minmax(0,880px);justify-content:center">
+    <article class="content">
+      <nav class="box toc" aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <ol>{toc.map(([id, label]) => <li><a href={`#${id}`}>{label}</a></li>)}</ol>
+      </nav>
+
+      <h2 id="what-you-get">What Is Equinox and What You Get</h2>
+      <p>
+        Equinox is a luxury fitness club chain founded in New York in 1991. The Equinox Group operates about {f.clubs} clubs
+        across the United States, Canada and the United Kingdom, with the largest clusters in New York and California, and is
+        building a pipeline of around 50 more. The group also runs Equinox Hotels and the invitation-only E by Equinox clubs.
+      </p>
+      <p>
+        Clubs combine a large gym floor with group fitness studios, Pilates and cycling rooms, personal training and spa
+        services. Most locations include towels, toiletries and well-stocked locker rooms, and some have pools, saunas and steam
+        rooms. The price is several times what a budget gym charges, and what you pay depends mostly on which clubs you can use.
+      </p>
+
+      <div class="plans three">
+        <div class="plan">
+          <h3>Single Club / Select</h3>
+          <p class="price">{m(f.singleLow)}<small> /month from</small></p>
+          <p class="sub">Reported {m(f.singleLow)}–{m(f.singleHigh)} · initiation fee varies</p>
+          <ul>
+            <li>Unlimited use of one home club</li>
+            <li>Group fitness classes</li>
+            <li>Towels and locker-room amenities</li>
+            <li>Equinox+ app included</li>
+          </ul>
+        </div>
+        <div class="plan featured">
+          <span class="badge">Most common</span>
+          <h3>All Access</h3>
+          <p class="price">{m(f.allAccessLow)}<small> /month from</small></p>
+          <p class="sub">Reported {m(f.allAccessLow)}–{m(f.allAccessHigh)} · typical about {m(f.allAccessTypical)}</p>
+          <ul>
+            <li>Most Equinox clubs in the US</li>
+            <li>Group fitness classes at every eligible club</li>
+            <li>Guest passes each year</li>
+            <li>Everything in Single Club</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Destination</h3>
+          <p class="price">{m(f.destinationLow)}<small> /month from</small></p>
+          <p class="sub">Reported {m(f.destinationLow)}–{m(f.destinationHigh)}+ · typical about {m(f.destinationTypical)}</p>
+          <ul>
+            <li>Every Equinox club, including flagships</li>
+            <li>London and Toronto clubs</li>
+            <li>Priority class booking</li>
+            <li>Everything in All Access</li>
+          </ul>
+        </div>
+      </div>
+      <p class="updated">Reported ranges on a 12-month commitment. Equinox does not publish national prices, and tier names and inclusions vary by market.</p>
+
+      <h2 id="membership-cost">Typical Monthly Cost and Membership Fees</h2>
+      <p>Equinox does not print prices on its website. You get a quote for your club and tier, usually after a tour. These are the charges to expect.</p>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Charge</th><th>Amount</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><th>Monthly dues</th><td>About {m(f.singleLow)} to {m(f.destinationHigh)}+, by tier and city</td><td>Every month</td></tr>
+          <tr><th>Initiation fee</th><td>{m(f.initiationLow)} on promotion to about {m(f.initiationHigh)}, higher at some flagships</td><td>Once, when you sign</td></tr>
+          <tr><th>Non-medical freeze</th><td>Additional fee, set by Equinox</td><td>Each freeze</td></tr>
+          <tr><th>Extras</th><td>Lockers, laundry, premium classes, spa, training</td><td>Only if you use them</td></tr>
+          <tr><th>Taxes</th><td>Varies by state and city</td><td>Added where applicable</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Reported prices by city</h3>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Market</th><th>All Access to Destination, per month</th></tr></thead>
+        <tbody>
+          <tr><th>New York City</th><td>$300 to $500+</td></tr>
+          <tr><th>Los Angeles</th><td>$280 to $450</td></tr>
+          <tr><th>San Francisco Bay Area</th><td>$280 to $380</td></tr>
+          <tr><th>Miami</th><td>$250 to $360</td></tr>
+          <tr><th>Chicago</th><td>$220 to $330</td></tr>
+          <tr><th>Dallas and Houston</th><td>$210 to $310</td></tr>
+        </tbody>
+      </table></div>
+      <p>Regional tiers such as Metro NY Access, Southern California Access or Boston Access are typically priced between a single-club and an All Access membership.</p>
+
+      <h2 id="tiers">Membership Tiers and What Those Prices Mean</h2>
+      <h3>Single club or regional access</h3>
+      <p>The cheapest way in. You train at one home club, or every club in one region. Good if you live and work near the same club and rarely travel.</p>
+      <h3>All Access</h3>
+      <p>Covers most Equinox clubs in the United States. It is the default quote at many clubs and the plan to pick if you split your week between home and office, or travel between US cities.</p>
+      <h3>Destination</h3>
+      <p>Adds the flagship clubs, such as Hudson Yards in New York, plus international clubs in London and Toronto and earlier class booking. Expect to pay {m(f.destinationLow)} or more a month.</p>
+      <h3>E by Equinox and Optimize</h3>
+      <p>E by Equinox is an invitation-only club with its own pricing, reported above {m(400)} a month. Optimize by Equinox is a high-touch coaching programme reported at about {f.optimizeYear} a year on top of a base membership. Neither is part of a standard tier.</p>
+      <h3>Personal training</h3>
+      <p>Training is billed separately, at roughly {m(f.ptLow)} to {m(f.ptHigh)} a session in major markets, usually in packages.</p>
+
+      <h2 id="yearly-cost">Yearly Membership Cost</h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Tier</th><th>Monthly</th><th>Dues × 12</th><th>With {m(f.initiationHigh)} initiation</th></tr></thead>
+        <tbody>
+          <tr><th>Single club (low)</th><td>{m(f.singleLow)}</td><td>{m(year(f.singleLow))}</td><td><strong>{m(year(f.singleLow, f.initiationHigh))}</strong></td></tr>
+          <tr><th>All Access (typical)</th><td>{m(f.allAccessTypical)}</td><td>{m(year(f.allAccessTypical))}</td><td><strong>{m(year(f.allAccessTypical, f.initiationHigh))}</strong></td></tr>
+          <tr><th>Destination (typical)</th><td>{m(f.destinationTypical)}</td><td>{m(year(f.destinationTypical))}</td><td><strong>{m(year(f.destinationTypical, f.initiationHigh))}</strong></td></tr>
+        </tbody>
+      </table></div>
+      <p>Before tax and extras. With the initiation fee waived, take {m(f.initiationHigh)} off the last column.</p>
+
+      <h2 id="price-factors">Things That Affect the Price</h2>
+      <h3>Club and city</h3>
+      <p>Manhattan and Los Angeles clubs cost the most. Chicago, Texas and Florida clubs cost the least.</p>
+      <h3>Access tier</h3>
+      <p>The more clubs you can use, the more you pay. The jump from single club to Destination can be {m(150)} a month or more.</p>
+      <h3>Initiation fee</h3>
+      <p>The biggest one-off swing, from waived to {m(f.initiationHigh)} or more.</p>
+      <h3>Commitment</h3>
+      <p>The {f.commitmentMonths}-month commitment is the standard quote. Month-to-month terms, where offered, cost more each month.</p>
+      <h3>Corporate and partner rates</h3>
+      <p>Some employers and partner programmes offer reduced dues or a waived initiation fee. Freezes are not available on payroll-deducted or subsidised corporate memberships.</p>
+      <h3>Taxes</h3>
+      <p>Some states and cities tax gym memberships.</p>
+
+      <h2 id="rules">Contract, Freeze, Guest and Cancellation Rules</h2>
+      <p>These come from Equinox's standard membership agreement and member policies. Your own agreement, and your state's law, take precedence.</p>
+      <ul>
+        <li><strong>Commitment:</strong> an initial {f.commitmentMonths}-month period, after which monthly memberships renew month to month.</li>
+        <li><strong>Price changes:</strong> after the initial period, Equinox can change dues with at least 30 days' notice.</li>
+        <li><strong>Three-day right:</strong> you can cancel for a full refund before midnight of the third operating day after receiving your agreement.</li>
+        <li><strong>Cancelling:</strong> {f.cancelNoticeDays} days' written notice, in person, by mail, by email to Cancellations@Equinox.com, or online if you joined online.</li>
+        <li><strong>Early exit:</strong> permitted for permanent disability, death, or moving more than 25 miles from your home club and any comparable club.</li>
+        <li><strong>Freezing:</strong> up to {f.freezeMonths} months, longer for medical reasons. Non-medical freezes carry a fee and freezes cannot be backdated.</li>
+        <li><strong>Guests:</strong> {f.guestPasses} guest passes a year for new members. Guests must be {f.guestMinAge}+, show ID, sign a waiver and stay with you.</li>
+        <li><strong>Returned payments:</strong> a $20 fee for each dishonoured card charge or cheque.</li>
+      </ul>
+
+      <h2 id="reading-quotes">How to Read an Equinox Price Quote</h2>
+      <ul>
+        <li>Ask which tier the quote is for, and list the clubs you actually plan to use.</li>
+        <li>Check whether the initiation fee is included, reduced or waived, and until when.</li>
+        <li>Confirm whether the rate is for a {f.commitmentMonths}-month commitment or month to month.</li>
+        <li>Ask what the rate becomes after the first year.</li>
+        <li>Ask which extras cost more: lockers, laundry, premium classes, spa and training.</li>
+        <li>Get the quote in writing before you sign.</li>
+      </ul>
+
+      <h2 id="save">How to Save Money and Get Better Value</h2>
+      <ul>
+        <li>Join during a promotion. Initiation fees are often waived in January, around Memorial Day and in early autumn.</li>
+        <li>Buy the lowest tier that covers the clubs you really use. You can ask to upgrade later.</li>
+        <li>Ask your employer about a corporate rate.</li>
+        <li>Freeze instead of cancelling for a short break, if you will come back.</li>
+        <li>Diarise the end of your first {f.commitmentMonths} months and give {f.cancelNoticeDays} days' notice in time if you plan to leave.</li>
+        <li>Use your guest passes to let a friend try a club before they buy.</li>
+        <li>If you mostly train at home, compare the Equinox+ app alone at {m(f.appMonthly)} a month.</li>
+      </ul>
+
+      <Faq items={faqs} />
+
+      <h2 id="final">Final Thoughts</h2>
+      <ul>
+        <li>Budget about {m(year(f.allAccessTypical))} a year for a typical All Access membership, plus any initiation fee and tax.</li>
+        <li>A single-club or regional tier saves the most if you train in one place.</li>
+        <li>Know your commitment end date and the {f.cancelNoticeDays}-day notice rule before you sign.</li>
+        <li>Your written quote and membership agreement are the final word on price and terms.</li>
+      </ul>
+      <p class="note">
+        This is an independent guide and is not affiliated with Equinox. Prices are reported ranges, vary by club and
+        may change. Confirm current details on equinox.com or with your local club.
+      </p>
+    </article>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(org)} />
+</Base>
